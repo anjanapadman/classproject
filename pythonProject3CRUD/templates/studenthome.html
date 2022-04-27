@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Dashboard - SB Admin</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        <link href="{% static 'static1/css/styles.css' %}" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+            <!-- Navbar-->
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#!">Settings</a></li>
+                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="{% url 'logoutview' %}">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Core</div>
+                            <a class="nav-link" href="index.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Dashboard
+                            </a>
+                            <div class="sb-sidenav-menu-heading">Interface</div>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Layouts
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                                    <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                Pages
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        Authentication
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="login.html">Login</a>
+                                            <a class="nav-link" href="register.html">Register</a>
+                                            <a class="nav-link" href="password.html">Forgot Password</a>
+                                        </nav>
+                                    </div>
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                                        Error
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="401.html">401 Page</a>
+                                            <a class="nav-link" href="404.html">404 Page</a>
+                                            <a class="nav-link" href="500.html">500 Page</a>
+                                        </nav>
+                                    </div>
+                                </nav>
+                            </div>
+                            <div class="sb-sidenav-menu-heading">Addons</div>
+                            <a class="nav-link" href="charts.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Charts
+                            </a>
+                            <a class="nav-link" href="tables.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Tables
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        Start Bootstrap
+                    </div>
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+<!--                <main>-->
+<!--                    <div class="container-fluid px-4">-->
+<!--                        <h1 class="mt-4">Dashboard</h1>-->
+<!--                        <ol class="breadcrumb mb-4">-->
+<!--                            <li class="breadcrumb-item active">Dashboard</li>-->
+<!--                        </ol>-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-xl-3 col-md-6">-->
+<!--                                <div class="card bg-primary text-white mb-4">-->
+<!--                                    <div class="card-body">Primary Card</div>-->
+<!--                                    <div class="card-footer d-flex align-items-center justify-content-between">-->
+<!--                                        <a class="small text-white stretched-link" href="#">View Details</a>-->
+<!--                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-xl-3 col-md-6">-->
+<!--                                <div class="card bg-warning text-white mb-4">-->
+<!--                                    <div class="card-body">Warning Card</div>-->
+<!--                                    <div class="card-footer d-flex align-items-center justify-content-between">-->
+<!--                                        <a class="small text-white stretched-link" href="#">View Details</a>-->
+<!--                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-xl-3 col-md-6">-->
+<!--                                <div class="card bg-success text-white mb-4">-->
+<!--                                    <div class="card-body">Success Card</div>-->
+<!--                                    <div class="card-footer d-flex align-items-center justify-content-between">-->
+<!--                                        <a class="small text-white stretched-link" href="#">View Details</a>-->
+<!--                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-xl-3 col-md-6">-->
+<!--                                <div class="card bg-danger text-white mb-4">-->
+<!--                                    <div class="card-body">Danger Card</div>-->
+<!--                                    <div class="card-footer d-flex align-items-center justify-content-between">-->
+<!--                                        <a class="small text-white stretched-link" href="#">View Details</a>-->
+<!--                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-xl-6">-->
+<!--                                <div class="card mb-4">-->
+<!--                                    <div class="card-header">-->
+<!--                                        <i class="fas fa-chart-area me-1"></i>-->
+<!--                                        Area Chart Example-->
+<!--                                    </div>-->
+<!--&lt;!&ndash;                                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>&ndash;&gt;-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-xl-6">-->
+<!--                                <div class="card mb-4">-->
+<!--                                    <div class="card-header">-->
+<!--                                        <i class="fas fa-chart-bar me-1"></i>-->
+<!--                                        Bar Chart Example-->
+<!--                                    </div>-->
+<!--                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="card mb-4">-->
+<!--                            <div class="card-header">-->
+<!--                                <i class="fas fa-table me-1"></i>-->
+<!--                                DataTable Example-->
+<!--                            </div>-->
+<!--&lt;!&ndash;                            <div class="card-body">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <table id="datatablesSimple">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <thead>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <th>Name</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <th>Position</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <th>Office</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <th>Age</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <th>Start date</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <th>Salary</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </thead>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <tfoot>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <th>Name</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <th>Position</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <th>Office</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <th>Age</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <th>Start date</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <th>Salary</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </tfoot>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <tbody>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Tiger Nixon</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>System Architect</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Edinburgh</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>61</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2011/04/25</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$320,800</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Garrett Winters</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Accountant</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Tokyo</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>63</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2011/07/25</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$170,750</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Ashton Cox</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Junior Technical Author</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>San Francisco</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>66</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2009/01/12</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$86,000</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Cedric Kelly</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Senior Javascript Developer</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Edinburgh</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>22</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2012/03/29</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$433,060</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Airi Satou</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Accountant</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Tokyo</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>33</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2008/11/28</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$162,700</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Brielle Williamson</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Integration Specialist</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>New York</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>61</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2012/12/02</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$372,000</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Herrod Chandler</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Sales Assistant</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>San Francisco</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>59</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2012/08/06</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$137,500</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Rhona Davidson</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Integration Specialist</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Tokyo</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>55</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2010/10/14</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$327,900</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Colleen Hurst</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Javascript Developer</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>San Francisco</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>39</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2009/09/15</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$205,500</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Sonya Frost</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Software Engineer</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Edinburgh</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>23</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2008/12/13</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$103,600</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Jena Gaines</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Office Manager</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>London</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>30</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2008/12/19</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$90,560</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Quinn Flynn</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Support Lead</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Edinburgh</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>22</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2013/03/03</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$342,000</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Charde Marshall</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Regional Director</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>San Francisco</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>36</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2008/10/16</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$470,600</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Haley Kennedy</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Senior Marketing Designer</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>London</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>43</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2012/12/18</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$313,500</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Tatyana Fitzpatrick</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Regional Director</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>London</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>19</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2010/03/17</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$385,750</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Michael Silva</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Marketing Designer</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>London</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>66</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2012/11/27</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$198,500</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Paul Byrd</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Chief Financial Officer (CFO)</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>New York</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>64</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2010/06/09</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$725,000</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Gloria Little</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Systems Administrator</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>New York</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>59</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2009/04/10</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$237,500</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Bradley Greer</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Software Engineer</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>London</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>41</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2012/10/13</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$132,000</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Dai Rios</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Personnel Lead</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Edinburgh</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>35</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2012/09/26</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$217,500</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Jenette Caldwell</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Development Lead</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>New York</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>30</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2011/09/03</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$345,000</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Yuri Berry</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Chief Marketing Officer (CMO)</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>New York</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>40</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2009/06/25</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$675,000</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Caesar Vance</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Pre-Sales Support</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>New York</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>21</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2011/12/12</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$106,450</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Doris Wilder</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Sales Assistant</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Sidney</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>23</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2010/09/20</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$85,600</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Angelica Ramos</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Chief Executive Officer (CEO)</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>London</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>47</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2009/10/09</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$1,200,000</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Gavin Joyce</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Developer</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Edinburgh</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>42</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2010/12/22</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$92,575</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Jennifer Chang</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Regional Director</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Singapore</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>28</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2010/11/14</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$357,650</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Brenden Wagner</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Software Engineer</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>San Francisco</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>28</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2011/06/07</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$206,850</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Fiona Green</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Chief Operating Officer (COO)</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>San Francisco</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>48</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2010/03/11</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$850,000</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Shou Itou</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Regional Marketing</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Tokyo</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>20</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2011/08/14</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$163,000</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Michelle House</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Integration Specialist</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Sidney</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>37</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2011/06/02</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$95,400</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Suki Burks</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Developer</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>London</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>53</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2009/10/22</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$114,500</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Prescott Bartlett</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Technical Author</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>London</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>27</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2011/05/07</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$145,000</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Gavin Cortez</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Team Leader</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>San Francisco</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>22</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2008/10/26</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$235,500</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Martena Mccray</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Post-Sales support</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Edinburgh</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>46</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2011/03/09</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$324,050</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Unity Butler</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Marketing Designer</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>San Francisco</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>47</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2009/12/09</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$85,675</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Howard Hatfield</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Office Manager</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>San Francisco</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>51</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2008/12/16</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$164,500</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Hope Fuentes</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Secretary</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>San Francisco</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>41</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2010/02/12</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$109,850</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Vivian Harrell</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Financial Controller</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>San Francisco</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>62</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2009/02/14</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$452,500</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Timothy Mooney</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Office Manager</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>London</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>37</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2008/12/11</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$136,200</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Jackson Bradshaw</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Director</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>New York</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>65</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2008/09/26</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$645,750</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Olivia Liang</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Support Engineer</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Singapore</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>64</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2011/02/03</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$234,500</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Bruno Nash</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Software Engineer</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>London</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>38</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2011/05/03</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$163,500</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Sakura Yamamoto</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Support Engineer</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Tokyo</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>37</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2009/08/19</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$139,575</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Thor Walton</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Developer</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>New York</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>61</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2013/08/11</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$98,540</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Finn Camacho</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Support Engineer</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>San Francisco</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>47</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2009/07/07</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$87,500</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Serge Baldwin</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Data Coordinator</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Singapore</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>64</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2012/04/09</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$138,575</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Zenaida Frank</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Software Engineer</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>New York</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>63</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2010/01/04</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$125,250</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Zorita Serrano</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Software Engineer</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>San Francisco</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>56</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2012/06/01</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$115,000</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Jennifer Acosta</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Junior Javascript Developer</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Edinburgh</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>43</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2013/02/01</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$75,650</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Cara Stevens</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Sales Assistant</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>New York</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>46</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2011/12/06</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$145,600</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Hermione Butler</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Regional Director</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>London</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>47</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2011/03/21</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$356,250</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Lael Greer</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Systems Administrator</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>London</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>21</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2009/02/27</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$103,500</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Jonas Alexander</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Developer</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>San Francisco</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>30</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2010/07/14</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$86,500</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Shad Decker</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Regional Director</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Edinburgh</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>51</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2008/11/13</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$183,000</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Michael Bruce</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Javascript Developer</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Singapore</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>29</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2011/06/27</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$183,000</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Donna Snider</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>Customer Support</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>New York</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>27</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>2011/01/25</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>$112,000</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </tbody>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </table>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </main>-->
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; Your Website 2022</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="{% static 'static1/js/scripts.js' %}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="{% static 'static1/assets/demo/chart-area-demo.js' %}"></script>
+        <script src="{% static 'static1/assets/demo/chart-bar-demo.js' %}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="{% static 'static1/js/datatables-simple-demo.js' %}"></script>
+    </body>
+</html>
+
+</body>
+</html>
